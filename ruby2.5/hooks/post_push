@@ -8,7 +8,7 @@ repoName=${IMAGE_NAME:0:tagStart-1}
 
 # Tag and push image for each additional tag
 for tag in {latest,$(date +%Y%m%d%H%M%S)}; do  
-    docker tag $IMAGE_NAME ${repoName}:${tag}
-    docker push ${repoName}:${tag}
+    docker tag $IMAGE_NAME ${repoName}:ruby2.5-${tag}
+    docker push ${repoName}:ruby2.5-${tag}
 done
 

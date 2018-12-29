@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM ruby:2.5
 
 RUN apt-get update \
   && apt-get install -y \
@@ -16,7 +16,7 @@ RUN apt-get update \
     ninja-build \
     pkg-config \
     python-pip \
-    python2 \
+    python \
     python3 \
     python3-pip \
     silversearcher-ag \
@@ -45,7 +45,7 @@ RUN TERM=xterm sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussel
   && chsh -s $(which zsh) $USER
 
 # Setup DOT files
-RUN git clone https://github.com/arjes/dotfiles.git /dotfiles \
+RUN git clone https://github.com/arjes/dotfiles.git /dotfiles  \
   && cd /dotfiles \
   && git submodule update --init --recursive \
   && find /dotfiles -maxdepth 1 -name .\* -exec sh -c 'rm -f $HOME/$(basename {}) && ln -s {} $HOME/$(basename {})' \; \

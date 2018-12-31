@@ -47,6 +47,7 @@ RUN TERM=xterm sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussel
 # Setup DOT files
 RUN git clone https://github.com/arjes/dotfiles.git /dotfiles  \
   && cd /dotfiles \
+  && git checkout 53bdc00879643c098bceade7dea37f79709308f0 \
   && git submodule update --init --recursive \
   && find /dotfiles -maxdepth 1 -name .\* -exec sh -c 'rm -f $HOME/$(basename {}) && ln -s {} $HOME/$(basename {})' \; \
   && nvim +PlugInstall +qall +UpdateRemotePlugins

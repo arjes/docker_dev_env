@@ -50,6 +50,7 @@ RUN git clone https://github.com/arjes/dotfiles.git /dotfiles  \
   && git submodule update --init --recursive \
   && find /dotfiles -maxdepth 1 -name .\* -exec sh -c 'rm -f $HOME/$(basename {}) && ln -s {} $HOME/$(basename {})' \; \
   && nvim +PlugInstall +qall +UpdateRemotePlugins
+  && echo 1
 
 ENV PATH="~/.bin:${PATH}"
 ENV LANG en_US.UTF-8
